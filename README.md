@@ -1,5 +1,10 @@
 # README
 
+## Prerequisites
+
+- Java Development Kit (JDK): Ensure that you have JDK 8 or higher installed.
+- Tomcat Server: Apache Tomcat 9.x is required.
+
 ## Smart Tomcat run configuration for Intellij IDEA
 
 **You'll need to install Smart Tomcat plugin from the marketplace.**

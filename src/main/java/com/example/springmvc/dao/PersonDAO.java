@@ -31,4 +31,9 @@ public class PersonDAO {
                 .findAny()
                 .orElse(null);
     }
+
+    public void save(Person person) {
+        person.setId(++peopleCount);
+        people.add(person);
+    }
 }
