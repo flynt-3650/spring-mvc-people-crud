@@ -1,6 +1,7 @@
 package com.example.springmvc.dao;
 
 import com.example.springmvc.models.Person;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,8 +18,7 @@ public class PersonDAO {
                 new Person(++peopleCount, "Tom"),
                 new Person(++peopleCount, "Bob"),
                 new Person(++peopleCount, "Mike"),
-                new Person(++peopleCount, "Katy")
-        ));
+                new Person(++peopleCount, "Katy")));
     }
 
     public List<Person> index() {
@@ -32,8 +32,17 @@ public class PersonDAO {
                 .orElse(null);
     }
 
-    public void save(Person person) {
+    public void save(@NotNull Person person) {
         person.setId(++peopleCount);
         people.add(person);
+    }
+
+    public void update(int id, @NotNull Person updatedPerson) {
+        Person personToBeUpdated = show(id);
+        personToBeUpdated.setName(updatedPerson.getName());
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId() == id);
     }
 }
