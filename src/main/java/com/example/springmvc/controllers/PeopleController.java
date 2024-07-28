@@ -1,6 +1,7 @@
 package com.example.springmvc.controllers;
 
 import com.example.springmvc.dao.PersonDAO;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +21,13 @@ public class PeopleController {
     }
 
     @GetMapping()
-    public String index(Model model) {
+    public String index(@NotNull Model model) {
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
+    public String show(@PathVariable("id") int id, @NotNull Model model) {
         model.addAttribute("person", personDAO.show(id));
         return "people/show";
     }

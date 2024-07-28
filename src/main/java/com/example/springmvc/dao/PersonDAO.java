@@ -9,15 +9,16 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
-    private static int PEOPLE_COUNT;
+    private static int peopleCount;
     private final List<Person> people;
 
     {
         people = new ArrayList<>(Arrays.asList(
-                new Person(++PEOPLE_COUNT, "Tom"),
-                new Person(++PEOPLE_COUNT, "Bob"),
-                new Person(++PEOPLE_COUNT, "Mike"),
-                new Person(++PEOPLE_COUNT, "Katy")));
+                new Person(++peopleCount, "Tom"),
+                new Person(++peopleCount, "Bob"),
+                new Person(++peopleCount, "Mike"),
+                new Person(++peopleCount, "Katy")
+        ));
     }
 
     public List<Person> index() {
@@ -25,6 +26,9 @@ public class PersonDAO {
     }
 
     public Person show(int id) {
-        return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+        return people.stream()
+                .filter(person -> person.getId() == id)
+                .findAny()
+                .orElse(null);
     }
 }
