@@ -15,10 +15,10 @@ public class PersonDAO {
 
     {
         people = new ArrayList<>(Arrays.asList(
-                new Person(++peopleCount, "Tom"),
-                new Person(++peopleCount, "Bob"),
-                new Person(++peopleCount, "Mike"),
-                new Person(++peopleCount, "Katy")));
+                new Person(++peopleCount, "Tom", 24, "tom@mail.ru"),
+                new Person(++peopleCount, "Bob", 52, "bob@mail.ru"),
+                new Person(++peopleCount, "Mike", 18, "mike@yahoo.com"),
+                new Person(++peopleCount, "Katy", 34, "katy@gmail.com")));
     }
 
     public List<Person> index() {
@@ -26,7 +26,8 @@ public class PersonDAO {
     }
 
     public Person show(int id) {
-        return people.stream()
+        return people
+                .stream()
                 .filter(person -> person.getId() == id)
                 .findAny()
                 .orElse(null);
@@ -39,7 +40,10 @@ public class PersonDAO {
 
     public void update(int id, @NotNull Person updatedPerson) {
         Person personToBeUpdated = show(id);
+
         personToBeUpdated.setName(updatedPerson.getName());
+        personToBeUpdated.setAge(updatedPerson.getAge());
+        personToBeUpdated.setEmail(updatedPerson.getEmail());
     }
 
     public void delete(int id) {
