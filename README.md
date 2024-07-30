@@ -4,6 +4,7 @@
 
 - Java Development Kit (JDK): Ensure that you have JDK 8 or higher installed.
 - Tomcat Server: Apache Tomcat 9.x is required.
+- PostgreSQL: PSQL 16 is required to run at localhost:5432
 
 ## Smart Tomcat run configuration for Intellij IDEA
 
