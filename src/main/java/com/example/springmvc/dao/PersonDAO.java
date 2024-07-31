@@ -70,6 +70,7 @@ public class PersonDAO {
         long before = System.currentTimeMillis();
 
         jdbcTemplate.batchUpdate("INSERT INTO person VALUES(?, ?, ?, ?)", new BatchPreparedStatementSetter() {
+            @SuppressWarnings("null")
             @Override
             public void setValues(@NotNull PreparedStatement preparedStatement, int i) throws SQLException {
                 preparedStatement.setInt(1, people.get(i).getId());

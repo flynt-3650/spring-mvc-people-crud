@@ -29,7 +29,8 @@ public class PeopleController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, @NotNull Model model) {
+    public String show(@PathVariable("id") int id,
+                       @NotNull Model model) {
         model.addAttribute("person", personDAO.show(id));
         return "people/show";
     }
@@ -52,7 +53,8 @@ public class PeopleController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(@NotNull Model model, @PathVariable("id") int id) {
+    public String edit(@NotNull Model model,
+                       @PathVariable("id") int id) {
         model.addAttribute("person", personDAO.show(id));
         return "people/edit";
     }
