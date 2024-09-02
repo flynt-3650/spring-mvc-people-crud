@@ -1,31 +1,41 @@
 package com.example.springmvc.models;
 
+import javax.persistence.*;
+
 import javax.validation.constraints.*;
 
+@Entity
+@Table(name = "Person")
 public class Person {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message = "Name must not be empty")
     @Size(min = 2, max = 30, message = "Name must be between 2 & 30 characters")
+    @Column(name = "name")
     private String name;
 
     @Min(value = 0, message = "Age must be grater than 0")
+    @Column(name = "age")
     private int age;
 
     @NotEmpty(message = "Email must not be empty")
     @Email(message = "Email must be valid")
+    @Column(name = "email")
     private String email;
 
     @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Address must be in this format: Country, City," +
             " Postal code (6 digits).")
+    @Column(name = "address")
     private String address;
 
     public Person() {
 
     }
 
-    public Person(int id, String name, int age, String email, String address) {
-        this.id = id;
+    public Person(String name, int age, String email, String address) {
         this.name = name;
         this.age = age;
         this.email = email;

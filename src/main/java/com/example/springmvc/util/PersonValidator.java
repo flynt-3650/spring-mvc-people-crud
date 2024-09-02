@@ -28,8 +28,8 @@ public class PersonValidator implements Validator {
         Person person = (Person) target;
 
 
-        if (personDAO.show((person).getEmail()).isPresent()) {
-            errors.rejectValue("email", "", "This email is already taken.");
-        }
+//        if (personDAO.show((person).getEmail()).isPresent()) {
+//            errors.rejectValue("email", "", "This email is already taken.");
+//        }
     }
 }
