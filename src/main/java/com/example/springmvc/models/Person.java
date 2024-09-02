@@ -2,7 +2,7 @@ package com.example.springmvc.models;
 
 import javax.persistence.*;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "Person")

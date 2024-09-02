@@ -26,23 +26,32 @@ public class PersonDAO {
         return session.createQuery("SELECT p FROM Person p", Person.class).getResultList();
     }
 
+    @Transactional
     public Person show(int id) {
-        return null;
+        return sessionFactory.getCurrentSession().get(Person.class, id);
     }
 
-    public Person show(String email) {
-        return null;
-    }
-
+    @Transactional
     public void save(@NotNull Person person) {
-
+        sessionFactory.getCurrentSession().persist(person);
     }
 
+    @Transactional
     public void update(int id, @NotNull Person updatedPerson) {
-
+        sessionFactory.getCurrentSession().createQuery(
+                "UPDATE Person p SET p.name = :name, p.age = :age, p.email = :email, p.address = :address WHERE p.id = :id")
+                .setParameter("name", updatedPerson.getName())
+                .setParameter("age", updatedPerson.getAge())
+                .setParameter("email", updatedPerson.getEmail())
+                .setParameter("address", updatedPerson.getAddress())
+                .setParameter("id", updatedPerson.getId())
+                .executeUpdate();
     }
 
+    @Transactional
     public void delete(int id) {
-
+        Session session = sessionFactory.getCurrentSession();
+        Person person = session.get(Person.class, id);
+        session.remove(person);
     }
 }
