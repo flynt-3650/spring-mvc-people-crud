@@ -38,14 +38,12 @@ public class PersonDAO {
 
     @Transactional
     public void update(int id, @NotNull Person updatedPerson) {
-        sessionFactory.getCurrentSession().createQuery(
-                "UPDATE Person p SET p.name = :name, p.age = :age, p.email = :email, p.address = :address WHERE p.id = :id")
-                .setParameter("name", updatedPerson.getName())
-                .setParameter("age", updatedPerson.getAge())
-                .setParameter("email", updatedPerson.getEmail())
-                .setParameter("address", updatedPerson.getAddress())
-                .setParameter("id", updatedPerson.getId())
-                .executeUpdate();
+        Person personToBeUpdated = sessionFactory.getCurrentSession().get(Person.class, id);
+        
+        personToBeUpdated.setName(updatedPerson.getName());
+        personToBeUpdated.setAge(updatedPerson.getAge());
+        personToBeUpdated.setEmail(updatedPerson.getEmail());
+        personToBeUpdated.setAddress(updatedPerson.getAddress());
     }
 
     @Transactional

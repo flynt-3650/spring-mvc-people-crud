@@ -67,12 +67,10 @@ public class SpringConfig implements WebMvcConfigurer {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
         dataSource.setDriverClassName(env.getRequiredProperty("hibernate.driver_class"));
         dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
         dataSource.setUsername(env.getRequiredProperty("hibernate.connection.username"));
         dataSource.setPassword(env.getRequiredProperty("hibernate.connection.password"));
-
         return dataSource;
     }
 
@@ -81,7 +79,7 @@ public class SpringConfig implements WebMvcConfigurer {
 //        return new JdbcTemplate(dataSource());
 //    }
 
-    private Properties hibernateProperties() {
+    private @NotNull Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         return properties;
@@ -93,7 +91,6 @@ public class SpringConfig implements WebMvcConfigurer {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.example.springmvc.models");
         sessionFactory.setHibernateProperties(hibernateProperties());
-
         return sessionFactory;
     }
 
@@ -101,7 +98,6 @@ public class SpringConfig implements WebMvcConfigurer {
     public PlatformTransactionManager hibernateTransactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
-
         return transactionManager;
     }
 }
