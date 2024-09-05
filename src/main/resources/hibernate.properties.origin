@@ -4,3 +4,4 @@ hibernate.connection.username=
 hibernate.connection.password=
 
 hibernate.show_sql=
+hibernate.current_session_context_class=

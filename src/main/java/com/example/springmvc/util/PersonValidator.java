@@ -1,7 +1,7 @@
 package com.example.springmvc.util;
 
-import com.example.springmvc.dao.PersonDAO;
 import com.example.springmvc.models.Person;
+import com.example.springmvc.services.PeopleService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,11 +11,11 @@ import org.springframework.validation.Validator;
 @Component
 public class PersonValidator implements Validator {
 
-    private final PersonDAO personDAO;
+    private final PeopleService peopleService;
 
     @Autowired
-    public PersonValidator(PersonDAO personDAO) {
-        this.personDAO = personDAO;
+    public PersonValidator(PeopleService peopleService) {
+        this.peopleService = peopleService;
     }
 
     @Override
@@ -28,8 +28,6 @@ public class PersonValidator implements Validator {
         Person person = (Person) target;
 
 
-//        if (personDAO.show((person).getEmail()).isPresent()) {
-//            errors.rejectValue("email", "", "This email is already taken.");
-//        }
+        // it does nothing, don't delete it or half of the app won't work
     }
 }

@@ -1,6 +1,5 @@
 package com.example.springmvc.controllers;
 
-import com.example.springmvc.dao.PersonDAO;
 import com.example.springmvc.models.Person;
 import com.example.springmvc.services.PeopleService;
 import com.example.springmvc.util.PersonValidator;
