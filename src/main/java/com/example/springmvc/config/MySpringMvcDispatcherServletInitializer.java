@@ -17,11 +17,13 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
         return new Class[]{SpringConfig.class};
     }
 
+    @SuppressWarnings("null")
     @Override
     protected String @NotNull [] getServletMappings() {
         return new String[]{"/"};
     }
 
+    @SuppressWarnings("null")
     @Override
     public void onStartup(@NotNull ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);

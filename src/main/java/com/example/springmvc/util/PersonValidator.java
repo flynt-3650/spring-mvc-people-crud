@@ -11,21 +11,20 @@ import org.springframework.validation.Validator;
 @Component
 public class PersonValidator implements Validator {
 
-    private final PeopleService peopleService;
-
     @Autowired
     public PersonValidator(PeopleService peopleService) {
-        this.peopleService = peopleService;
     }
 
+    @SuppressWarnings("null")
     @Override
     public boolean supports(@NotNull Class<?> clazz) {
         return Person.class.equals(clazz);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void validate(@NotNull Object target, @NotNull Errors errors) {
-        Person person = (Person) target;
+        // Person person = (Person) target;
 
 
         // it does nothing, don't delete it or half of the app won't work
