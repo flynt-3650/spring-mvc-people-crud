@@ -24,9 +24,6 @@ public class PersonValidator implements Validator {
     @SuppressWarnings("null")
     @Override
     public void validate(@NotNull Object target, @NotNull Errors errors) {
-        // Person person = (Person) target;
-
-
-        // it does nothing, don't delete it or half of the app won't work
+        
     }
 }
