@@ -34,7 +34,6 @@ import java.util.Properties;
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
-
     private final Environment env;
 
     @Autowired
@@ -78,11 +77,6 @@ public class SpringConfig implements WebMvcConfigurer {
         return dataSource;
     }
 
-//    @Bean
-//    public JdbcTemplate jdbcTemplate() {
-//        return new JdbcTemplate(dataSource());
-//    }
-
     private @NotNull Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql",
@@ -91,15 +85,6 @@ public class SpringConfig implements WebMvcConfigurer {
                 env.getRequiredProperty("hibernate.current_session_context_class"));
         return properties;
     }
-
-//    @Bean
-//    public LocalSessionFactoryBean sessionFactory() {
-//        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-//        sessionFactory.setDataSource(dataSource());
-//        sessionFactory.setPackagesToScan("com.example.springmvc.models");
-//        sessionFactory.setHibernateProperties(hibernateProperties());
-//        return sessionFactory;
-//    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -114,12 +99,6 @@ public class SpringConfig implements WebMvcConfigurer {
         return em;
     }
 
-//    @Bean
-//    public PlatformTransactionManager hibernateTransactionManager() {
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(sessionFactory().getObject());
-//        return transactionManager;
-//    }
 
     @Bean
     public PlatformTransactionManager transactionManager() {

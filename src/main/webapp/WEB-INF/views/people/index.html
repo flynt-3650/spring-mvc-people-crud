@@ -8,15 +8,15 @@
 
 <body>
 
-    <div th:each="person : ${people}">
-        <a th:href="@{/people/{id}(id=${person.getId()})}"
-            th:text="${person.getName() + ', ' + person.getAge()}">user</a>
-    </div>
+<div th:each="person : ${people}">
+    <a th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' + person.getAge()}">user</a>
+</div>
 
-    <br />
-    <hr />
+<br/>
+<hr/>
 
-    <a href="/people/new">Create new person</a>
+<a href="/people/new">Create new person</a>
 
 </body>
 
