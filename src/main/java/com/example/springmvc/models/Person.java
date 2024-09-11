@@ -27,11 +27,6 @@ public class Person {
     @Column(name = "email")
     private String email;
 
-    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Address must be in this format: Country, City," +
-            " Postal code (6 digits).")
-    @Column(name = "address")
-    private String address;
-
     public Person() {
 
     }
@@ -40,7 +35,6 @@ public class Person {
         this.name = name;
         this.age = age;
         this.email = email;
-        this.address = address;
     }
 
     public int getId() {
@@ -73,13 +67,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
