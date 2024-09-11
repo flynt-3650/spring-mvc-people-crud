@@ -24,6 +24,6 @@ public class PersonValidator implements Validator {
     @SuppressWarnings("null")
     @Override
     public void validate(@NotNull Object target, @NotNull Errors errors) {
-        
+
     }
 }
